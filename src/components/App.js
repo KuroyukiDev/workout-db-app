@@ -20,8 +20,14 @@ class App extends Component {
   
   render() {
     const workouts = this.getWorkoutsByGroup();
+    const styles = {
+      containerFluid: {
+        margin: 0,
+        padding: 0
+      }
+    };
     return (
-      <div className="app">
+      <div style={styles}>
         <Header/>
         
         <Exercises workouts={workouts}/>

@@ -1,33 +1,33 @@
-module.exports = {
-  entry: ['./src/index.js'],
-  output: {
-    path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
-  module: {
-    loaders: [
-      {
-        exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'env', 'stage-1']
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+module.exports = (env) => {
+  const isProduction = env === 'production';
+  console.log('In Production Mode:', isProduction);
+  const CSSExtract = new ExtractTextPlugin('styles.css');
+  return {
+    entry: "./src/index.js",
+    output: {
+      path: path.join(__dirname, 'public', 'dist'),
+      filename: "bundle.js"
+    },
+    module: {
+      rules: [
+        {
+          loader: 'babel-loader',
+          test: /\.js$/,
+          exclude: /node_modules/
         }
-      }
-    ]
-  },
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-    alias: {
-      '@material-ui/core': '@material-ui/core/es'
+      ]
+    },
+    plugins: [
+      CSSExtract
+    ],
+    devtool: isProduction ? 'source-map' : 'inline-source-map',
+    devServer: {
+      contentBase: path.join(__dirname, 'public'),
+      historyApiFallback: true,
+      publicPath: '/dist/'
     }
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './',
-    watchOptions: {
-      aggregateTimeout: 300,
-      poll: 1000
-    }
-  }
+  };
 };

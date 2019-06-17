@@ -28,6 +28,12 @@ export const exercises = [
     muscles: 'chest'
   },
   {
+    id: 'push-ups',
+    title: 'Push Ups',
+    description: 'Chest exercise...',
+    muscles: 'chest'
+  },
+  {
     id: 'pull-ups',
     title: 'Pull Ups',
     description: 'Back and biceps exercise...',
