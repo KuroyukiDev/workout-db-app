@@ -21,7 +21,7 @@
     "babel-preset-env": "^1.5.2",
     "babel-preset-react": "^6.24.1",
     "css-loader": "0.28.4",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "raf": "3.3.2",
     "sass-loader": "^7.1.0",
     "style-loader": "0.18.2",
